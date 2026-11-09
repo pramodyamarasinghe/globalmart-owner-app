@@ -16,6 +16,7 @@
       }
     },
     "android": {
+      "package": "com.globalmart.owner",
       "adaptiveIcon": {
         "backgroundColor": "#F3FBF6",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -45,7 +46,8 @@
       "@react-native-community/datetimepicker"
     ],
     "experiments": {
-      "typedRoutes": true
+      "typedRoutes": true,
+      "reactCompiler": true
     }
   }
 }
