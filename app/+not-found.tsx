@@ -1,6 +1,6 @@
 import { Link, Stack } from 'expo-router'
 import { StyleSheet, Text, View } from 'react-native'
-import { colors, space, type } from '@/src/theme/tokens'
+import { colors, space, type } from '@/src/shared/theme/tokens'
 
 export default function NotFoundScreen() {
   return (
@@ -8,7 +8,7 @@ export default function NotFoundScreen() {
       <Stack.Screen options={{ title: 'Not found' }} />
       <View style={styles.container}>
         <Text style={styles.title}>This screen does not exist.</Text>
-        <Link href="/(tabs)/pos" style={styles.link}>
+        <Link href="/(tabs)/sell" style={styles.link}>
           <Text style={styles.linkText}>Back to POS</Text>
         </Link>
       </View>

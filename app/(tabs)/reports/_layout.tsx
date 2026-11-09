@@ -1,5 +1,5 @@
 import { Stack } from 'expo-router'
-import { useColors } from '@/src/store/theme'
+import { useColors } from '@/src/features/theme/useTheme'
 
 export default function ReportsLayout() {
   const c = useColors()

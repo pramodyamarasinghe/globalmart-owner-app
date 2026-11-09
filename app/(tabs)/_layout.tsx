@@ -1,11 +1,9 @@
 ﻿import { Ionicons } from '@expo/vector-icons'
 import { Tabs } from 'expo-router'
-import { useLayout } from '@/src/layout/useLayout'
-import { useCashierQueue } from '@/src/store/cashierQueue'
-import { useColors } from '@/src/store/theme'
+import { useLayout } from '@/src/shared/hooks/useLayout'
+import { useColors } from '@/src/features/theme/useTheme'
 
 export default function TabsLayout() {
-  const ticketCount = useCashierQueue((s) => s.tickets.length)
   const { tabBarHeight, insets } = useLayout()
   const c = useColors()
 
@@ -39,7 +37,7 @@ export default function TabsLayout() {
       }}
     >
       <Tabs.Screen
-        name="pos"
+        name="sell"
         options={{
           title: 'Sell',
           tabBarLabel: 'Sell',
@@ -47,12 +45,10 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="cashier"
+        name="orders"
         options={{
-          title: 'Cashier',
-          tabBarLabel: 'Cashier',
-          tabBarBadge: ticketCount > 0 ? ticketCount : undefined,
-          tabBarBadgeStyle: { backgroundColor: c.accent, color: '#fff', fontSize: 10 },
+          title: 'Orders',
+          tabBarLabel: 'Orders',
           tabBarIcon: ({ color, size }) => icon('receipt-outline', color, size),
         }}
       />
