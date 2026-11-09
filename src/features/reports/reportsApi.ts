@@ -10,7 +10,7 @@ export const reportsApi = baseApi.injectEndpoints({
     }),
     /** Report shapes differ per report, so the viewer reads them loosely. */
     getReport: b.query<unknown, { name: string; query?: ReportQuery }>({
-      query: ({ name, query }) => ({ path: `/reports/${name}`, params: query }),
+      query: ({ name, query }) => ({ path: `/reports/${encodeURIComponent(name)}`, params: query }),
     }),
   }),
 })

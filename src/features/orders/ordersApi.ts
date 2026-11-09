@@ -16,7 +16,7 @@ export const ordersApi = baseApi.injectEndpoints({
       invalidatesTags: ['Orders'],
     }),
     cancelOrder: b.mutation<{ id: string }, string>({
-      query: (id) => ({ path: `/orders/${id}/cancel`, method: 'POST', schema: idSchema }),
+      query: (id) => ({ path: `/orders/${encodeURIComponent(id)}/cancel`, method: 'POST', schema: idSchema }),
       transformErrorResponse: cloudOnlyError,
       invalidatesTags: ['Orders'],
     }),
