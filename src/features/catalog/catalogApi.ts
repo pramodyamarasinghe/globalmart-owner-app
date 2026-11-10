@@ -1,3 +1,4 @@
+import type { z } from 'zod'
 import { baseApi } from '@/src/api/baseApi'
 import { cloudOnlyError } from '@/src/shared/lib/errors'
 import { healthSchema } from '@/src/features/auth/auth.schemas'
@@ -11,7 +12,11 @@ export const catalogApi = baseApi.injectEndpoints({
     }),
     getCatalog: b.query<CatalogProduct[], void>({
       query: () => ({ path: '/catalog', schema: catalogSchema }),
-      transformResponse: (r: { products: CatalogProduct[] }) => r.products,
+      transformResponse: (r: z.infer<typeof catalogSchema>): CatalogProduct[] =>
+        r.products.map((p) => ({
+          ...p,
+          packIds: r.options === undefined ? null : r.options.filter((o) => o.productId === p.id).map((o) => o.id),
+        })),
       transformErrorResponse: cloudOnlyError,
     }),
     /** Age of the server's copy of the shop data in seconds (null until the first copy). */
